@@ -1,0 +1,18 @@
+===================================================================
+--- /atlas-asg/AnalysisBase/2.4.3/TrigDecisionTool/cmt/Makefile.RootCore	(revision 720241)
++++ /atlas-asg/AnalysisBase/2.4.3/TrigDecisionTool/cmt/Makefile.RootCore	(working copy)
+@@ -6,12 +6,12 @@
+ # https://twiki.cern.ch/twiki/bin/viewauth/Atlas/RootCore#Package_Makefile
+ 
+ PACKAGE          = TrigDecisionTool
+-PACKAGE_PRELOAD  = 
++PACKAGE_PRELOAD  = PyROOT
+ PACKAGE_CXXFLAGS = 
+ PACKAGE_OBJFLAGS = 
+ PACKAGE_LDFLAGS  = 
+ PACKAGE_BINFLAGS = 
+-PACKAGE_LIBFLAGS =
++PACKAGE_LIBFLAGS = -lPyROOT
+ PACKAGE_DEP = TrigNavStructure TrigConfxAOD AsgTools TrigDecisionInterface TrigSteeringEvent xAODRootAccess Asg_Boost xAODBase
+ PACKAGE_TRYDEP   = 
+ PACKAGE_CLEAN    = 
