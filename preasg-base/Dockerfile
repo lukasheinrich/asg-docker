@@ -5,8 +5,8 @@ RUN rpm --import http://emisoft.web.cern.ch/emisoft/dist/EMI/3/RPM-GPG-KEY-emi
 RUN curl -o /etc/yum.repos.d/egi-trustanchors.repo \
             http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo
 RUN yum --nogpgcheck -y install yum-priorities yum-protectbase ca-policy-egi-core
-RUN curl -O http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/base/emi-release-3.0.0-2.el5.noarch.rpm &&\
-    yum localinstall -y emi-release-3.0.0-2.el5.noarch.rpm
+RUN curl -O http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/base/emi-release-3.0.0-2.el6.noarch.rpm && \
+    yum localinstall -y emi-release-3.0.0-2.el6.noarch.rpm
 RUN yum install -y voms-clients3 globus-proxy-utils
 
 RUN mkdir -p /etc/grid-security/vomsdir/atlas

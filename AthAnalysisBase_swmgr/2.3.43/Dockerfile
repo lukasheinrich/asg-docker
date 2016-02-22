@@ -1,6 +1,7 @@
-FROM lukasheinrich/slc6_cern_server_x86_64_2015-02-10
+#FROM lukasheinrich/slc6_cern_server_x86_64_2015-02-10
+FROM lukasheinrich/preasg-base
 RUN yum groupinstall -y "Development Tools"
-RUN yum install -y gcc libmpc-devel mpfr-devel gmp-devel tar bzip2
+RUN yum install -y gcc libmpc-devel mpfr-devel gmp-devel tar bzip2 wget which
 RUN mkdir /code
 WORKDIR /code
 RUN wget -q --no-check-certificate https://pc-ads-01.roma1.infn.it/KV/sw-mgr

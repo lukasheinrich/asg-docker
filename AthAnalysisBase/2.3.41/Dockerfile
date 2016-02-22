@@ -1,4 +1,4 @@
-FROM lukasheinrich/slc6_cern_server_x86_64_2015-02-10
+FROM lukasheinrich/preasg-base
 RUN mkdir /code_gcc
 WORKDIR /code_gcc
 RUN yum groupinstall -y "Development Tools" 
