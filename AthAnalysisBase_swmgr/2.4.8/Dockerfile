@@ -12,5 +12,9 @@ RUN ./sw-mgr -a AthAnalysisBase:2.4.8 -i 2.4.8 \
     -p $ROOTDIR/software/AthAnalysisBase/x86_64-slc6-gcc49-opt/2.4.8 \
     -T release --site-config $ROOTDIR/AtlasSiteConfig.sh \
     --no-tag --relative-links
+ADD CMTUSERCONTEXT CMTUSERCONTEXT
+ENV CMTUSERCONTEXT /code/CMTUSERCONTEXT
+ENV AtlasSetup /code/software/AthAnalysisBase/x86_64-slc6-gcc49-opt/2.4.8/AtlasSetup 
 RUN ln -s /lib64/libuuid.so.1 /lib64/libuuid.so
 RUN ln -s /usr/local/bin/g++ /usr/local/bin/lcg-g++-4.9.3
+RUN echo "alias asetup='source $AtlasSetup/scripts/asetup.sh'" > ~/.bashrc

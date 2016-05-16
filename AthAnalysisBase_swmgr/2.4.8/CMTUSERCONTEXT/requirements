@@ -1,0 +1,46 @@
+macro CppSpecificFlags "" \
+	ATLAS&target-gcc43 " -D__USE_XOPEN2K8 "
+	
+macro_append pp_cppflags " $(CppSpecificFlags)"
+macro_append pp_cflags   " $(CppSpecificFlags)"
+
+# set an env var for use outside, eg a standalone Makefile
+set CPPEXPFLAGS "" \
+        ATLAS $(CppSpecificFlags)
+
+cmtpath_pattern \
+    macro genconfInstallDir "$(genconfInstallDir)" \
+       <project>&<project>_without_installarea&target-unix "$(<package>_root)/python" \
+       <project>&<project>_with_installarea&target-unix "<path>/$(<project>_installarea_prefix)$(shared_install_subdir)/python"
+
+action post_merge_rootmap "abuild-merge-rootmap.py"
+action post_merge_genconfdb "abuild-merge-genconfdb.py"
+action post_build_tpcnvdb "abuild-merge-genconfdb.py"
+
+#some actions to help rootcore enthusiasts
+action find_packages "setupWorkArea.py; cd $TestArea/WorkArea/cmt; cmt bro cmt config; cd -"
+action compile "cd $TestArea/WorkArea/cmt; cmt bro make $(cmt_args); cd -"
+action compile_pkg "cd $TestArea/WorkArea/cmt; cmt bro -select=$(cmt_args) make; cd -"
+
+#convenient replacements for acmd.py
+#add all share/bin dirs to the PATH env var seen by CMT, so that acmd.py can be found, for example
+# although this is done in ExternalPolicy, we do it here as well so that
+# the setting is available even when ExternalPolicy is not seen, e.g.,
+# when we are outside any package
+cmtpath_pattern \
+  path_remove_regexp PATH "" <project>_with_installarea "$(<project>_installarea_prefix_remove)$(CMT_PATH_remove_share_regexp)bin$"
+
+cmtpath_pattern \
+  path_prepend PATH "" <project>_with_installarea <path>/$(<project>_installarea_prefix)/share/bin
+
+action new_analysisapp "acmd.py cmt new-analysisapp $(cmt_args)" 
+action new_pkg "cd $TestArea;acmd.py cmt new-pkg $(cmt_args);cd -"
+action new_alg "acmd.py cmt new-alg $(cmt_args)"
+action new_analysisalg "acmd.py cmt new-analysisalg $(cmt_args)"
+action new_asgtool "acmd.py cmt new-asgtool $(cmt_args)"
+action new_jobo "acmd.py cmt new-jobo $(cmt_args) AthEventCounter --inFile=$ASG_TEST_FILE_MC"
+action new_skeleton "cd $TestArea;acmd.py cmt new-pkg $(cmt_args);cd $(cmt_args);acmd.py cmt new-analysisalg $(cmt_args)Alg;cd share;acmd.py cmt new-jobo $(cmt_args)AlgJobOptions $(cmt_args)Alg --inFile=$ROOTCORE_TEST_FILE"
+action make_skeleton "cd $TestArea;acmd.py cmt new-pkg $(cmt_args);cd $(cmt_args);acmd.py cmt new-analysisalg $(cmt_args)Alg;cd share;acmd.py cmt new-jobo $(cmt_args)AlgJobOptions $(cmt_args)Alg --inFile=$ASG_TEST_FILE_MC"
+action checkout_pkg "cd $TestArea;pkgco.py $(cmt_args)"
+
+action cppcheck "/afs/cern.ch/atlas/offline/external/cppcheck/cppcheck-1.69/cppcheck --enable=warning,missingInclude,portability --template=gcc ./ $(cmt_args)"

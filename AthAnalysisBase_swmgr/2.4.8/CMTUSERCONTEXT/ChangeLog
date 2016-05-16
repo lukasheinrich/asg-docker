@@ -1,0 +1,66 @@
+2016-04-05 Will Buttinger <will@cern.ch>
+	* requirements: added: new_analysisapp for standalone POOL application, new_jobo for example jobo, cppcheck to run the cppcheck static analyzer
+	* Tag CMTUSERCONTEXT-00-01-08
+
+2015-12-19 Will Buttinger <will@cern.ch>
+        * requirements: Added new_asgtool cmt action for generating new asg tools, and tweaked compile_pkg method
+        Tag CMTUSERCONTEXT-00-01-07
+
+2015-12-18 Will Buttinger <will@cern.ch>
+	* requirements: Added make_skeleton and checkout_pkg cmt actions
+	Tag CMTUSERCONTEXT-00-01-06
+
+2015-12-09   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* requirements: Ensure InstallArea/share/bin gets consistently prepended
+	to PATH for all projects
+	Tag CMTUSERCONTEXT-00-01-05
+
+2015-12-02 Will buttinger <will@cern.ch>
+	* InstallArea/share/bin/WorkAreaLib.py: Added missing Ath releases
+	* Tag CMTUSERCONTEXT-00-01-04
+
+2015-11-30   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* InstallArea/share/bin/WorkAreaLib.py: Merge modification of python/WorkAreaLib.py, Tools/PyUtils-00-14-12 
+	* requirements: Patch for requirements by Will Buttinger 
+	Tag CMTUSERCONTEXT-00-01-03
+
+2014-06-04   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* InstallArea/share/bin/setupWorkArea.py: merge modification of
+	bin/setupWorkArea.py: Stop processing .asetup.save file if ParsingError
+	occurs, log this at debug level, Tools/PyUtils-00-13-19
+	Tag CMTUSERCONTEXT-00-01-02
+
+2014-05-21   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* InstallArea/share/bin/setupWorkArea.py: patch with modification of
+	bin/setupWorkArea.py, Tools/PyUtils-00-13-10 by Sebastien Binet -
+	dont crash and burn while retrieving AtlasProject from asetup.save
+	Tag CMTUSERCONTEXT-00-01-01
+
+2013-10-24   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* InstallArea/share/bin/setupWorkArea.py: copy of bin/setupWorkArea.py,
+	Tools/PyUtils-00-13-09 modified so as to import everything from
+	WorkAreaLib.py in current directory rather than from PyUtils package
+	* ChangeLog: Add this file
+	Tag CMTUSERCONTEXT-00-01-00
+
+2013-10-23   Grigori Rybkine <Grigori.Rybkine@cern.ch>
+
+	* requirements: Extra compilation flags for releases built with gcc43
+	on SLC5, to be used on SLC6 (Emil Obreshkov), the rest is needed to
+	make the flags and setupWorkArea.py work when CMTUSERCONTEXT set up
+	* InstallArea/share/bin/abuild-merge-rootmap.py: copy of
+	scripts/abuild-merge-rootmap.py, AtlasCommonPolicy-00-00-25
+	* InstallArea/share/bin/abuild-merge-genconfdb.py: copy of
+	scripts/abuild-merge-genconfdb.py, AtlasCommonPolicy-00-00-25
+	* InstallArea/share/bin/abuild-gen-tpcnvdb.py: copy of
+	scripts/abuild-gen-tpcnvdb.py, AtlasCommonPolicy-00-00-25
+	* InstallArea/share/bin/setupWorkArea.py: copy of bin/setupWorkArea.py,
+	Tools/PyUtils-00-13-09 (to be modified)
+	* InstallArea/share/bin/WorkAreaLib.py: copy of python/WorkAreaLib.py,
+	Tools/PyUtils-00-13-09
+	* InstallArea/python/PyCmt/: copy of python, Tools/PyCmt-00-00-34
