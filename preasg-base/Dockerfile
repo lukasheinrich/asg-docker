@@ -69,3 +69,5 @@ RUN mkdir -p /code_python && cd /code_python && \
     cd / && rm -rf /code_python && ldconfig
 
 RUN curl https://bootstrap.pypa.io/get-pip.py | python -
+ADD custom_ssh_config /etc/ssh/ssh_config
+
