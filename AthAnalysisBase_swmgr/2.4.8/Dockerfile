@@ -1,7 +1,6 @@
 FROM lukasheinrich/preasg-base
 RUN mkdir /code
 WORKDIR /code
-RUN yum install -y wget
 RUN curl -skO https://pc-ads-01.roma1.infn.it/KV/sw-mgr
 RUN chmod +x ./sw-mgr
 ENV ROOTDIR /code

@@ -4,7 +4,7 @@ RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/local.conf && \
     echo "/usr/local/lib64" >> /etc/ld.so.conf.d/local.conf
 
 RUN yum groupinstall -y "Development Tools"
-RUN yum install -y git tar libmpc-devel mpfr-devel gmp-devel tar bzip2 git make 
+RUN yum install -y git tar libmpc-devel mpfr-devel gmp-devel tar bzip2 git make  wget
 
 RUN mkdir /code_gcc && cd /code_gcc && \
     curl -O ftp://ftp.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-4.8.4/gcc-4.8.4.tar.bz2 && \
